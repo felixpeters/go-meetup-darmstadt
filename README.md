@@ -8,6 +8,8 @@ Run", delivered on September 14, 2017 in Darmstadt, Germany.
 TODO: Implement simple webserver with a handler for a basic mathematical
 operation.
 
+TODO: Design simple homepage with usage instructions.
+
 ## Building
 
 TODO: Build the app locally and in the Go workspace. Name executable.
