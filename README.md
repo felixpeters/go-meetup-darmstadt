@@ -5,10 +5,15 @@ Run", delivered on September 14, 2017 in Darmstadt, Germany.
 
 ## The app
 
-TODO: Implement simple webserver with a handler for a basic mathematical
-operation.
+Our app contains two basic views:
+1. A landing page with usage instructions at the root URL.
+2. A page which displays the result of the sine operation for a given input.
 
-TODO: Design simple homepage with usage instructions.
+Inputs for the sine operation can be delivered via the query parameter *input*:
+* **Example query:** `http://localhost:8080/sine?input=5`
+
+If the input cannot be parsed to a floating-point number, an error will be
+shown.
 
 ## Building
 
