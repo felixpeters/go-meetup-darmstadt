@@ -27,11 +27,19 @@ the `bin` directory.
 
 ## Testing
 
-TODO: Test handler using httptest package.
+In order to run all tests, simply type `go test`. Some useful flags you should
+consider:
+* `-v`: verbose mode, e.g. lists test methods
+* `-cover`: gives you test coverage statistics
+* `-run`: Specify test cases  and subtests that you want to run
+  * `-run ''`: Run all tests
+  * `-run Root`: Run top-level tests matching "Root", e.g. "TestRootHandler"
+  * `-run Sine/Input=float`: Run top-level tests matching "Sine", run subtests
+  matching "Input=float"
 
-TODO: Test mathematical function using table-driven tests, subtests.
-
-TODO: Write another test using a testing package.
+Pitfalls:
+* Test methods have to be public.
+* A parent test will only complete once all of its subtests complete.
 
 ## Running
 

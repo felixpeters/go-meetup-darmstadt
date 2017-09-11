@@ -24,6 +24,7 @@ type Result struct {
 
 // homeHandler serves the HTML containing instructions for app usage.
 func homeHandler(w http.ResponseWriter, req *http.Request) {
+	w.WriteHeader(http.StatusOK)
 	displayPage("home", w)
 }
 
