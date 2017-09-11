@@ -66,17 +66,17 @@ information check out the Dockerfile.
 
 Dependency management has been a hot topic in the Go community for a while now.
 Rephrasing the discussion here would be useless, instead refer to this
-[post]{https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/}.
+[post](https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/).
 
 
 Right now, there are multiple packages that serve the same purpose:
-* [godep]{https://github.com/tools/godep}: This is the tool that will be merged
+* [godep](https://github.com/tools/godep): This is the tool that will be merged
 into the standard toolchain. The project is inactive since the repo was moved
 (see below). The tool is working and ready for production use.
-* [dep]{https://github.com/golang/dep}: This tool can be used now and will be
+* [dep](https://github.com/golang/dep): This tool can be used now and will be
 merged into the toolchain with Go 1.10.
-* Other tools that are used in the community are [gb]{https://getgb.io/},
-[Glide]{https://github.com/Masterminds/glide}, etc.
+* Other tools that are used in the community are [gb](https://getgb.io/),
+[Glide](https://github.com/Masterminds/glide), etc.
 
 
 `godep` is the most production-ready tool right now. The workflow is as follows:
