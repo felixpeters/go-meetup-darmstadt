@@ -8,11 +8,12 @@
 <body>
   <div class="container">  
     <h1>Go Basics: Test, Build, Run</h1>
+    <p>Input: {{.Input}}</p>
     {{if .Result}}
-    <p>The result for the given input is: {{.Result}}</p>
+    <p>Result: {{.Result}}</p>
     {{end}}
     {{if .Error}}
-    <p>An error occured: {{.Error}}</p>
+    <p>Error: {{.Error}}</p>
     {{end}}
   </div>
 </body>

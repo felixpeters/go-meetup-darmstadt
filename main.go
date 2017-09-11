@@ -5,7 +5,9 @@ import (
 	"html/template"
 	"io/ioutil"
 	"log"
+	"math"
 	"net/http"
+	"strconv"
 )
 
 // Page represents a webpage. Body can contain a string or HTML.
@@ -15,6 +17,7 @@ type Page struct {
 }
 
 type Result struct {
+	Input  string
 	Result float64
 	Error  string
 }
@@ -26,8 +29,15 @@ func homeHandler(w http.ResponseWriter, req *http.Request) {
 
 // sineHandler displays the result of the sine operation for the given input.
 func sineHandler(w http.ResponseWriter, req *http.Request) {
+	str := req.URL.Query().Get("input")
 	r := Result{
-		Result: 0.123456,
+		Input: str,
+	}
+	i, err := strconv.ParseFloat(str, 64)
+	if err != nil {
+		r.Error = "could not parse input to float"
+	} else {
+		r.Result = math.Sin(i)
 	}
 	displayResult(r, w)
 }
@@ -43,6 +53,8 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
+// displayResult uses the results template and prints the calculated result or
+// an error.
 func displayResult(r Result, w http.ResponseWriter) {
 	t, err := template.ParseFiles("html/result.html")
 	if err != nil {
