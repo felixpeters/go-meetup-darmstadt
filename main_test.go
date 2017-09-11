@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRootHandler(t *testing.T) {
@@ -57,6 +59,34 @@ func TestSineHandler(t *testing.T) {
 			}
 			if !tc.err && !strings.Contains(body, "<p>Result:") {
 				t.Errorf("handler should return result, got:\n%s", body)
+			}
+		})
+	}
+}
+
+func TestLoadPage(t *testing.T) {
+	var tt = []struct {
+		name   string
+		title  string
+		err    bool
+		substr string
+	}{
+		{"Input=valid", "home", false, "<h1>"},
+		{"Input=invalid", "gopher", true, ""},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			assert := assert.New(t)
+			page, err := loadPage(tc.title)
+
+			if tc.err {
+				assert.NotNil(err)
+				assert.Nil(page)
+			} else {
+				assert.Nil(err)
+				assert.Equal(page.Title, tc.title)
+				assert.Contains(string(page.Body), tc.substr)
 			}
 		})
 	}

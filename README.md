@@ -64,4 +64,27 @@ information check out the Dockerfile.
 
 ## Managing dependencies
 
-TODO: Initialize `/vendor` directory using `godep` and save dependencies.
+Dependency management has been a hot topic in the Go community for a while now.
+Rephrasing the discussion here would be useless, instead refer to this
+[post]{https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/}.
+
+
+Right now, there are multiple packages that serve the same purpose:
+* [godep]{https://github.com/tools/godep}: This is the tool that will be merged
+into the standard toolchain. The project is inactive since the repo was moved
+(see below). The tool is working and ready for production use.
+* [dep]{https://github.com/golang/dep}: This tool can be used now and will be
+merged into the toolchain with Go 1.10.
+* Other tools that are used in the community are [gb]{https://getgb.io/},
+[Glide]{https://github.com/Masterminds/glide}, etc.
+
+
+`godep` is the most production-ready tool right now. The workflow is as follows:
+1. Install a dependency via `go get`, e.g. `go get github.com/pkg/errors`.
+2. Save dependencies to a project-based `vendor` directory using `godep save`.
+3. Packages can be found in the `vendor` directory and all dependencies are
+listed in the `Godeps/Godeps.json` file.
+4. In order to update a package, run `go get -u foo/bar` and then
+`godep update foo/bar`.
+
+*TODO: include information on the dep tool!*
