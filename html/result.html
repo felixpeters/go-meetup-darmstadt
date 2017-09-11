@@ -8,9 +8,12 @@
 <body>
   <div class="container">  
     <h1>Go Basics: Test, Build, Run</h1>
-    <p>This simple web app can calculate the sine for a given numeric input.</p>
-    <p>Example: use a query in the form of <i>http://localhost:8080/sine?input=5</i>.
-    The result of the operation will be displayed on the page.</p>
+    {{if .Result}}
+    <p>The result for the given input is: {{.Result}}</p>
+    {{end}}
+    {{if .Error}}
+    <p>An error occured: {{.Error}}</p>
+    {{end}}
   </div>
 </body>
 </html>
