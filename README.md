@@ -17,7 +17,13 @@ shown.
 
 ## Building
 
-TODO: Build the app locally and in the Go workspace. Name executable.
+We can build our app in several different ways:
+* Use `go build` in order to build an executable with the repository name in 
+the repository directory.
+* Use `go build -o bin/app` in order to build an executable with the name *app* in
+the `bin` directory.
+* Use `go install` in order to build an executable which can be found in your
+`$GOPATH/bin` directory.
 
 ## Testing
 
@@ -29,8 +35,24 @@ TODO: Write another test using a testing package.
 
 ## Running
 
-TODO: Write Makefile for running tests, building and running app inside a Docker
-container.
+In order to test your app, you can simply run your main package using the
+command `go run main.go`.
+
+
+If you built the app locally (see above), you can run it using the command 
+`bin/app`.
+
+
+If you built the app using `go install` and your `$GOPATH/bin` directory is in
+your `PATH`, you can also run your app using the command `go-meetup-darmstadt`.
+
+
+With Go it is possible to compile code on your platform (e.g. macOS) for usage
+on another platform (e.g. Linux). This is known as *cross-compiling* and 
+becomes very useful if you want to run your app e.g. in a Docker container.
+Compiling on your system and just putting the executable into a small base
+image allows for Docker images with extremely small file sizes. For more
+information check out the Dockerfile.
 
 ## Managing dependencies
 
