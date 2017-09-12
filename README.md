@@ -25,22 +25,6 @@ the `bin` directory.
 * Use `go install` in order to build an executable which can be found in your
 `$GOPATH/bin` directory.
 
-## Testing
-
-In order to run all tests, simply type `go test`. Some useful flags you should
-consider:
-* `-v`: verbose mode, e.g. lists test methods
-* `-cover`: gives you test coverage statistics
-* `-run`: Specify test cases  and subtests that you want to run
-  * `-run ''`: Run all tests
-  * `-run Root`: Run top-level tests matching "Root", e.g. "TestRootHandler"
-  * `-run Sine/Input=float`: Run top-level tests matching "Sine", run subtests
-  matching "Input=float"
-
-Pitfalls:
-* Test methods have to be public.
-* A parent test will only complete once all of its subtests complete.
-
 ## Running
 
 In order to test your app, you can simply run your main package using the
@@ -61,6 +45,22 @@ becomes very useful if you want to run your app e.g. in a Docker container.
 Compiling on your system and just putting the executable into a small base
 image allows for Docker images with extremely small file sizes. For more
 information check out the Dockerfile.
+
+## Testing
+
+In order to run all tests, simply type `go test`. Some useful flags you should
+consider:
+* `-v`: verbose mode, e.g. lists test methods
+* `-cover`: gives you test coverage statistics
+* `-run`: Specify test cases  and subtests that you want to run
+  * `-run ''`: Run all tests
+  * `-run Root`: Run top-level tests matching "Root", e.g. "TestRootHandler"
+  * `-run Sine/Input=float`: Run top-level tests matching "Sine", run subtests
+  matching "Input=float"
+
+Pitfalls:
+* Test methods have to be public.
+* A parent test will only complete once all of its subtests complete.
 
 ## Managing dependencies
 

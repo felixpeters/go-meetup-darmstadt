@@ -22,8 +22,8 @@ type Result struct {
 	Error  string
 }
 
-// homeHandler serves the HTML containing instructions for app usage.
-func homeHandler(w http.ResponseWriter, req *http.Request) {
+// rootHandler serves the HTML containing instructions for app usage.
+func rootHandler(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	displayPage("home", w)
 }
@@ -78,7 +78,7 @@ func displayPage(title string, w http.ResponseWriter) {
 }
 
 func main() {
-	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/sine", sineHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
